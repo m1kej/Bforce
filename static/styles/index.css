@@ -1,0 +1,97 @@
+html {
+    background: #181818;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    animation: fade-in 2s ease;
+}
+
+a {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+.title {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 25px;
+    text-align: center;
+    transform: translateX(-43px);
+}
+
+.followup {
+    text-align: center;
+    opacity: .5;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+}
+
+.screenshot {
+    margin-top: 5%;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.137);
+    width: 100%;
+    animation: fade-up 1s ease;
+}
+
+svg {
+    width: 18px;
+    position: relative;
+    top: 3px;
+    margin-right: 5px;
+    fill: rgb(0, 252, 126) !important;
+}
+
+.buttons {
+    text-align: center;
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+.button {
+    color: rgb(0, 252, 126);
+}
+
+.nw::after {
+    content: " - Only for Windows";
+    color: #808080;
+}
+
+.img {
+    position: fixed;
+    top: 20px;
+    left: 10px;
+    width: 100px;
+}
+
+@media screen and (max-width: 1740px) {
+    .screenshot {
+        width: inherit;
+    }
+}
+
+@media screen and (max-width: 1020px) {
+    .screenshot {
+        width: 100%;
+    }
+    .center {
+        position: absolute;
+        top: 20%;
+        left: 0;
+        transform: none;
+        margin: 10px;
+    }
+}
