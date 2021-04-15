@@ -21,6 +21,10 @@ a {
     transform: translateX(-43px);
 }
 
+.title.only {
+    transform: none;
+}
+
 .followup {
     text-align: center;
     opacity: .5;
@@ -58,11 +62,16 @@ svg {
 .buttons {
     text-align: center;
     margin-top: 40px;
-    cursor: pointer;
+    user-select: none;
 }
 
 .button {
     color: rgb(0, 252, 126);
+}
+
+.nw {
+    cursor: default;
+    pointer-events: none;
 }
 
 .nw::after {
