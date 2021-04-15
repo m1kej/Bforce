@@ -12,5 +12,5 @@ app.get('/', (req, res) => {
 
 app.use(express.static(path.join(__dirname)));
 app.listen(PORT, () => {
-    console.log(`Running on port ${port}`)
+    console.log(`Running on port ${PORT}`)
 })
